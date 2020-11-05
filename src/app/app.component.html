@@ -1,0 +1,41 @@
+<h1>NG starter</h1>
+<div [formGroup]='myForm'>
+
+  <app-input
+    formControlName='username'
+    required
+    mobile="true"
+    ></app-input>
+    
+  <app-checkbox
+  formControlName='checkbox'
+  label="checkbox"
+  indeterminate
+  ></app-checkbox>
+
+  <app-select
+    formControlName="selection"
+    placeholder="some placeholder"
+    label="some label tag"
+    required
+    [list]="['tehran', 'Esfehan', 'Mashhad', 'Karaj']"
+    hint="یک هینت"
+  ></app-select>
+
+  <app-autocomplete
+    formControlName="auto"
+    required
+    placeholder="sssss0"
+    [list]="['tehran', 'Esfehan', 'Mashhad', 'Karaj']"
+    hint="hint"
+  ></app-autocomplete>
+
+  <app-datepicker
+    formControlName="start"
+    placeholder="some placeholder"
+    label="some label tag"
+  ></app-datepicker>
+
+
+  {{'2020/10/12' | jalali | farsi}}
+</div>
