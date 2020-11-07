@@ -32,4 +32,20 @@ export class HttpService {
   get(module, command, payload) {
     return this._post('get', module, command, payload);
   }
+
+  album(start, limit) {
+    return new Observable<any>(observer => {
+      this._http.get(`https://jsonplaceholder.typicode.com/albums${start || limit ? '?':''}${start?'_start='+start:''}${start && limit ?'&': ''}${limit?'_limit='+limit: ''}`)
+        .pipe(map(data => data))
+        .subscribe(res => {
+          observer.next(res);
+          observer.complete();
+        }, err => {
+          observer.error(err);
+          observer.complete();
+        })
+    });
+  }
+
+  
 }

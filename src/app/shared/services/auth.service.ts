@@ -6,7 +6,7 @@ import { BehaviorSubject, Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class AuthService {
-  authState$: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
+  private authState$: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
   private TOKEN_KEY = 'token';
 
   constructor(private httpService: HttpService) { }

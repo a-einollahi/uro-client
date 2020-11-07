@@ -1,0 +1,4 @@
+.router-outlet {
+  text-align: right;
+  direction: rtl;
+}

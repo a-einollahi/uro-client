@@ -1,16 +1,19 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
+import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, NG_VALIDATORS, ReactiveFormsModule } from '@angular/forms';
 // shared modules
 import { MaterialsModule } from './materials.module';
 import { PipesModule } from './pipes.module';
 // shared components
-import { SelectComponent } from './../components/select/select.component';
-import { CheckboxComponent } from './../components/checkbox/checkbox.component';
 import { InputComponent } from './../components/input/input.component';
+import { CheckboxComponent } from './../components/checkbox/checkbox.component';
+import { RadioButtonComponent } from './../components/radio-button/radio-button.component';
+import { SelectComponent } from './../components/select/select.component';
 import { AutocompleteComponent } from './../components/autocomplete/autocomplete.component';
 import { DatepickerComponent } from './../components/datepicker/datepicker.component';
+import { TableComponent } from '../components/table/table.component';
 // directives
 import { EmailDirective } from '../components/input/directives/email.directive';
 import { MobileDirective } from '../components/input/directives/mobile.directive';
@@ -18,9 +21,9 @@ import { PhoneDirective } from '../components/input/directives/phone.directive';
 import { NationalcodeDirective } from '../components/input/directives/nationalcode.directive';
 
 
-const sharedComponents = [ InputComponent, CheckboxComponent, SelectComponent, AutocompleteComponent, DatepickerComponent ]
+const sharedComponents = [ InputComponent, CheckboxComponent, RadioButtonComponent, SelectComponent, AutocompleteComponent, TableComponent, DatepickerComponent ]
 const modules = [
-  MaterialsModule, PipesModule, CommonModule, FormsModule, ReactiveFormsModule, RouterModule
+  MaterialsModule, PipesModule, CommonModule, RouterModule, HttpClientModule, FormsModule, ReactiveFormsModule
 ];
 const components = [
 ];

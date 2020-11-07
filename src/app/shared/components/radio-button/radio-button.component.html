@@ -1,0 +1,11 @@
+<label *ngIf="label">{{label}}</label>
+<mat-radio-group [formControl]="control"
+  [required]="required"
+  [labelPosition]="labelPosition"
+  [matTooltip]="tooltip"
+  [matTooltipPosition]="tooltipPosition"
+  [matTooltipHideDelay]="200"
+  [matTooltipShowDelay]="200"
+  (change)="onChange()">
+  <mat-radio-button *ngFor="let option of options" [value]="option">{{option}}</mat-radio-button>
+</mat-radio-group>

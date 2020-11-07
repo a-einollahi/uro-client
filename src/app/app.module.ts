@@ -6,9 +6,11 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
 import { SharedModule } from './shared/modules/shared.module';
+import { LoginComponent } from './site/login/login.component';
+import { RegisterComponent } from './site/register/register.component';
 
 @NgModule({
-  declarations: [ AppComponent ],
+  declarations: [ AppComponent, LoginComponent, RegisterComponent ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,

@@ -1,7 +1,4 @@
-import { MOMENT_FORMATS } from './../components/datepicker/jalali-date-format';
 import { NgModule } from '@angular/core';
-import { DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE } from '@angular/material/core';
-import { JalaliMomentDateAdapter, MAT_MOMENT_DATE_ADAPTER_OPTIONS } from './../components/datepicker/jalali-date-adapter';
 
 import { LayoutModule } from '@angular/cdk/layout';
 
@@ -72,8 +69,11 @@ import { MatPaginatorIntl, MatPaginatorModule } from '@angular/material/paginato
 import { MatSortModule } from '@angular/material/sort';
 import { MatTableModule } from '@angular/material/table';
 
-import { MatPaginatorIntlPersianService } from '../services/mat-paginator-intl-persian.service';
+import { DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE } from '@angular/material/core';
 import { JALALI_MOMENT_FORMATS } from '../components/datepicker/jalali-date-format';
+import { MOMENT_FORMATS } from './../components/datepicker/jalali-date-format';
+import { JalaliMomentDateAdapter, MAT_MOMENT_DATE_ADAPTER_OPTIONS } from './../components/datepicker/jalali-date-adapter';
+import { MatPaginatorIntlPersianService } from '../services/mat-paginator-intl-persian.service';
 
 const modules: any[] = [
   

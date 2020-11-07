@@ -12,6 +12,6 @@ export class MatPaginatorIntlPersianService extends MatPaginatorIntl {
   getRangeLabel = (index, pageSize, total) => {
     if (total === 0 || pageSize === 0) return '0 مورد';
 
-    return ` ${(index*pageSize)+1} تا ${(index+1)*pageSize<total?(index+1):total} از ${total} مورد`
+    return ` ${(index*pageSize)+1} تا ${(index+1)*pageSize<total?(index+1)*pageSize:total} از ${total} مورد`
   }
 }
