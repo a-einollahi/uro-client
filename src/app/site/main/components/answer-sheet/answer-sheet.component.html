@@ -1,0 +1,61 @@
+<div *ngIf="loadPage" style="margin: 2rem; display: flex; justify-content: center; align-items: center;">
+  <mat-spinner [diameter]="250" color="warn" [strokeWidth]="2"></mat-spinner>
+</div>
+
+<div *ngIf="!loadPage" [formGroup]="questionForm" style="margin: 2rem;">
+  <div>
+    <button mat-mini-fab color="warn" (click)="closeSheet()">
+      <mat-icon>close</mat-icon>
+    </button>
+  </div>
+
+  <div style="margin: 1rem 0;padding: 2rem;border-radius: 1rem; box-shadow: 0 0 4px 0px rgba(0, 0, 0, 0.3); display: flex; justify-content: space-between;">
+    <p>{{[answerSheet.patient.first_name, answerSheet.patient.last_name].join(' ')}}</p>
+    <p>{{answerSheet.createdAt | jalali | farsi}}</p>
+  </div>
+  <mat-accordion>
+    <mat-expansion-panel *ngFor="let question of displayQuestion">
+      <mat-expansion-panel-header>
+        <mat-panel-title>{{question.position.toString().padEnd(2) + ' - ' + question.question_title | farsi}}</mat-panel-title>
+      </mat-expansion-panel-header>
+
+      <!-- true-false -->
+      <div *ngIf="question.question_type === 'true-false'" style="padding: 2rem;border-radius: 1rem; box-shadow: 0 4px 4px 0px rgba(0, 0, 0, 0.3); display: flex;">
+        <mat-radio-group color="warn" style="display: flex; margin-top: 2rem;" [formControlName]="question.position">
+          <mat-radio-button value="true" class="mx-4">بله</mat-radio-button>
+          <mat-radio-button value="false">خیر</mat-radio-button>
+        </mat-radio-group>
+      </div>
+
+      <!-- single-section -->
+      <div *ngIf="question.question_type === 'single-section'" style="padding: 2rem;border-radius: 1rem; box-shadow: 0 4px 4px 0px rgba(0, 0, 0, 0.3); display: flex;">
+        <mat-form-field color="warn">
+          <input matInput [formControlName]="question.position" placeholder="پاسخ" [value]="question.answer">
+        </mat-form-field>
+      </div>
+
+      <!-- multi-section -->
+      <div *ngIf="question.question_type === 'multi-section'" style="padding: 2rem;border-radius: 1rem; box-shadow: 0 4px 4px 0px rgba(0, 0, 0, 0.3); display: flex;">
+        <mat-radio-group color="warn" style="display: flex; margin-top: 2rem;" [formControlName]="question.position">
+          <mat-radio-button *ngFor="let option of question.options" [value]="option" class="mx-4">{{option  | farsi}}</mat-radio-button>
+        </mat-radio-group>
+      </div>
+
+      <!-- multi-section-multi-answer -->
+      <div class="checkbox-group" *ngIf="question.question_type === 'multi-section-multi-answer'" style="padding: 2rem;border-radius: 1rem; box-shadow: 0 4px 4px 0px rgba(0, 0, 0, 0.3); display: flex;">
+        <mat-checkbox color="warn" *ngFor="let option of question.options" (change)="multiAnswer(question, $event.checked, option)" [checked]="question.answer?.includes(option)">
+          {{option  | farsi}}
+        </mat-checkbox>
+      </div>
+
+      <!-- description -->
+      <div *ngIf="question.question_type === 'description'" style="padding: 2rem;border-radius: 1rem; box-shadow: 0 4px 4px 0px rgba(0, 0, 0, 0.3); display: flex;">
+        <mat-form-field color="warn">
+          <textarea matInput [formControlName]="question.position" placeholder="{{'description' }}" rows="6">{{question.answer}}</textarea>
+        </mat-form-field>
+      </div>
+    </mat-expansion-panel>
+  </mat-accordion>
+</div>
+
+<mat-paginator [pageSizeOptions]="[5, 10, 25, 50]" [length]="number_of_questions" (page)="changePaginator($event)"></mat-paginator>

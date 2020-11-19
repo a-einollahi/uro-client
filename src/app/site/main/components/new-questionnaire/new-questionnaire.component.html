@@ -1,0 +1,16 @@
+<div style="display: flex; justify-content: flex-start; align-items: center; padding: 0 2rem; margin-top: 2rem">
+  <button mat-mini-fab color="warn" (click)="enableAddPatient()" [disabled]="addPatientStatus"><mat-icon mat-list-icon>add</mat-icon></button>
+  <span style="padding: 0 1rem; font-size: 2.4rem;">اضافه کردن بیمار جدید</span>
+</div>
+
+<div class="visibility mb-4" *ngIf="!addPatientStatus">
+  <app-search-patient (info)="emitInformation($event)"></app-search-patient>
+</div>
+
+<div class="visibility" *ngIf="addPatientStatus">
+  <app-add-patient (visibility)="desableAddPatient($event)" (info)="emitInformation($event)"></app-add-patient>
+</div>
+
+<div class="visibility" *ngIf="patientInfoStatus">
+  <app-patient-info class="visibility" [patient_information]="patientInfo"></app-patient-info>
+</div>

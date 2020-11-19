@@ -1,0 +1,56 @@
+
+<div style="display: flex; justify-content: space-between; text-align: center;">
+  <mat-card class="mat-elevation-z8">
+    <mat-card-header>
+      <mat-card-title>ایجاد بیمار جدید</mat-card-title>
+    </mat-card-header>
+
+    <mat-card-content>
+      <form [formGroup]="addPatientForm" style="width: 100%;">
+        <mat-radio-group formControlName="gender" color="primary" style="display: flex; margin-top: 2rem;">
+          <mat-radio-button value="male" class="mx-4">آقا</mat-radio-button>
+          <mat-radio-button value="female">خانم</mat-radio-button>
+        </mat-radio-group>
+
+        <div class="row w-100">
+          <div class="col-sm">
+            <app-input formControlName="national_code" nationalcode label="کد‌ملی"></app-input>
+          </div>
+          <div class="col-sm">
+          </div>
+        </div>
+        <div class="row w-100">
+          <div class="col-sm">
+            <app-input formControlName="first_name" label="نام"></app-input>
+          </div>
+          <div class="col-sm">
+            <app-input formControlName="last_name" label="نام‌خانوادگی"></app-input>
+          </div>
+        </div>
+
+        <div class="row w-100">
+          <div class="col-sm">
+            <app-select formControlName="state" label="استان" [list]="provinces"></app-select>
+          </div>
+          <div class="col-sm">
+            <app-select formControlName="city" label="شهر" [list]="filteredCities"></app-select>
+          </div>
+        </div>
+        <div class="row w-100">
+          <div class="col-sm">
+            <app-datepicker formControlName="birthday" label="تاریخ تولد"></app-datepicker>
+          </div>
+          <div class="col-sm">
+          </div>
+        </div>
+        <app-input-phone title="تلفن همراه" (phoneEmit)="addPhone($event)"></app-input-phone>
+        <div style="display: flow-root; float: right;">
+          <button mat-raised-button color="warn" (click)="createNewPatient()" [disabled]="addPatientForm.invalid">ایجاد</button>
+        </div>
+      </form>
+    </mat-card-content>
+  </mat-card>
+</div>
+<div style="position: absolute; left: 2rem; top: 2rem;" class="close">
+  <button mat-mini-fab color="warn" (click)="desableAddPatient()"><mat-icon mat-list-icon>close</mat-icon></button>
+</div>

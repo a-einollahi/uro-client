@@ -1,0 +1,22 @@
+<div style="display: flex; justify-content: space-between; text-align: center;">
+  <mat-card class="mat-elevation-z8">
+    <mat-card-header>
+      <mat-card-title>
+        {{[patient_information['first_name'], patient_information['last_name']].join(' ')}} ( {{patient_information.age | farsi}} )
+      </mat-card-title>
+    </mat-card-header>
+
+    <mat-card-content>
+      <!-- <div style="display: flex; margin-top: 2rem;"> -->
+        <mat-form-field [formGroup]="patientForm" *ngIf="questionnaires && questionnaires.length > 0">
+          <mat-select formControlName="questionnaire_id" placeholder="انتخاب پرسشنامه">
+            <mat-option *ngFor="let questionnaire of questionnaires" [value]="questionnaire.id">{{questionnaire.questionnaire_title }}</mat-option>
+          </mat-select>
+        </mat-form-field>
+      <!-- </div> -->
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-flat-button color="warn" (click)="createNewAnswerSheet()">ایجاد پرسشنامه جدید</button>
+    </mat-card-actions>
+  </mat-card>
+</div>

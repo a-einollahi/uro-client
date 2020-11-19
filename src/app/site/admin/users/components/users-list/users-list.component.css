@@ -1,0 +1,36 @@
+table {
+  width: 100%;
+  text-align: right;
+}
+
+th:nth-child(1) {
+  width: 10%;
+}
+
+th:nth-child(2) {
+  width: 35%;
+  flex-wrap: wrap;
+}
+
+th:nth-child(3) {
+  width: 35%;
+}
+
+th:nth-child(4) {
+  width: 10%;
+}
+
+th:nth-child(5) {
+  width: 10%;
+}
+
+.nullUser {
+  background: orange !important;
+  &:hover { opacity: .7; }
+}
+
+.notActiveUser{
+  background: #991717d3 !important;
+  color: #fff !important;
+  &:hover { background: #c02a2ad3; opacity: .9; }
+}

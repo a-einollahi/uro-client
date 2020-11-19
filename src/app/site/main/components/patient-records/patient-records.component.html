@@ -1,0 +1,62 @@
+<mat-card class="mat-elevation-z8" style="margin: 2rem; height: auto;">
+  <mat-card-content style="margin: 2rem;">
+    <div style="display: flex; flex-flow: column;">
+      <mat-card class="mat-elevation-z4 search-panel" style="width: 100%;" [formGroup]="searchForm">
+        <mat-card-content>
+          <div class="row col">
+            <div class="col">
+              <app-autocomplete label="نام بیمار" formControlName="search" [list]="filteredOptions"></app-autocomplete>
+            </div>
+          </div>
+          <div style="display: flex; align-items: center;">
+            <mat-form-field style="padding: 10px; width: calc(100% - 20px);">
+              <mat-label>انتخاب پرسشنامه</mat-label>
+              <mat-select formControlName="questionnaire">
+                <mat-option *ngFor="let option of questionnaires" [value]="option">{{option.title | farsi}}</mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+        </mat-card-content>
+
+        <div class="select-date">
+          <app-checkbox formControlName="search_by_date">انتخاب در بازه زمانی مشخص</app-checkbox>
+          <div class="row w-100">
+            <div class="col-sm">
+              <app-datepicker formControlName="start_date" label="از تاریخ" [disabled]="searchForm.get('search_by_date').value"></app-datepicker>
+            </div>
+            <div class="col-sm">
+              <app-datepicker formControlName="end_date" label="تا تاریخ" [disabled]="searchForm.get('search_by_date').value"></app-datepicker>
+            </div>
+          </div>
+        </div>
+        <div>
+          <div class="row justify-content-end m-2">
+            <button mat-flat-button color="warn" (click)="loadPatientsReport()" [disabled]="searchForm.invalid">جستجو</button>
+          </div>
+        </div>
+      </mat-card>
+      <hr>
+      <mat-card class="mat-elevation-z4" ngClass="{'patient-record': !patient_record.length }" style="padding: 0;">
+        <mat-card-content>
+          <div class="patient-information bg-dark" *ngFor="let row of patient_record" style="display: flex; flex-wrap: wrap; padding: .5rem;">
+            <div class="row-date bg-dark text-light" style="width: 100%; text-align: center; font-size: 2rem; padding: 1rem;">
+              {{ row.createdAt | jalali | farsi}}
+            </div>
+            <div class="row-question border bg-white" style="display: flex; flex-direction: column; width: 100%; align-items: flex-start;">
+              <div *ngFor="let answer of row.answers; let i = index" style="padding: 10px 0;">
+                <p style="color: #777;"><span style="padding:5px;">{{(i+1).toString().padStart(2, '0')|farsi}} - </span>{{answer.question.question_title | farsi}}</p>
+                <div *ngIf="answer.question.question_type === 'true-false'; then thenBlock else elseBlock"></div>
+                <ng-template #thenBlock>
+                  <p  style="margin: 0 2rem; text-align: initial;">{{ answer.value == "true" ? 'بله' : '' || answer.value == "false" ? 'خیر' : ''}}</p>
+                </ng-template>
+                <ng-template #elseBlock>
+                  <p style="margin: 0 2rem; text-align: initial;">{{ answer.value.toString() | farsi}}</p>
+                </ng-template>
+              </div>
+            </div>
+          </div>
+        </mat-card-content>
+      </mat-card>
+    </div>
+  </mat-card-content>
+</mat-card>

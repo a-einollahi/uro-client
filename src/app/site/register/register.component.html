@@ -1,1 +1,72 @@
-<p>register works!</p>
+<mat-card>
+  <mat-card-header>
+      <mat-card-title>ثبت نام</mat-card-title>
+  </mat-card-header>
+
+  <mat-card-content [formGroup]="registerForm">
+    <mat-horizontal-stepper linear #stepper>
+      <mat-step [stepControl]="registerForm.get('user_info')">
+        <div formGroupName="user_info" style="display: flex; flex-direction: column; padding: 2rem; align-items: center;">
+          <ng-template matStepLabel>اطلاعات کاربر</ng-template>
+          <mat-card class="mat-elevation-z4" style="margin: 2rem; display: flex; flex-direction: column; width: 400px;">
+            <mat-radio-group style="display: flex; justify-content: start; margin: 1rem 2rem;" formControlName="gender" color="primary">
+              <mat-radio-button value="male">آقا</mat-radio-button>
+              <mat-radio-button value="female" style="padding: 0 2rem;">خانم</mat-radio-button>
+            </mat-radio-group>
+            <mat-radio-group style="display: flex; justify-content: start; margin: 1rem 2rem;" formControlName="speciality" color="primary">
+              <mat-radio-button *ngFor="let option of speciality" [value]="option" style="padding: 1rem 0 0 2rem;">{{ trlSpeciality(option) }}</mat-radio-button>
+            </mat-radio-group>
+            <app-input formControlName="first_name" label="نام" required></app-input>
+            <app-input formControlName="last_name" label="نام خانوادگی" required></app-input>
+            <app-input formControlName="email" email label="ایمیل" required></app-input>
+            <app-input formControlName="username" nationalcode label="کدملی" hint="از حروف انگلیسی برای وارد کردن کدملی استفاده نمایید." required></app-input>
+            <app-input formControlName="password" type="password" label="رمز عبور" required></app-input>
+            <app-input formControlName="repeatedPassword" type="password" label="رمز عبور را مجدد وارد نمایید" required></app-input>
+          </mat-card>
+          <div>
+            <button mat-button color="primary" matStepperNext [disabled]="registerForm.get('user_info').invalid">صفحه بعد</button>
+          </div>
+        </div>
+      </mat-step>
+      
+      <mat-step [stepControl]="registerForm.get('personal_info')">
+        <div formGroupName="personal_info" style="display: flex; flex-direction: column; padding: 2rem; align-items: center;">
+          <ng-template matStepLabel>اطلاعات شخصی</ng-template>
+          <mat-card class="mat-elevation-z4" style="margin: 2rem; display: flex; flex-direction: column; width: 400px;">
+            <app-input formControlName="medical_number" label="شماره نظام پزشکی" required></app-input>
+            <app-select formControlName="state" label="استان" [list]="provinces"></app-select>
+            <app-select formControlName="city" label="شهر" [list]="filteredCities"></app-select>
+            <app-input-phone title="تلفن همراه" (phoneEmit)="addMobilePhone($event)"></app-input-phone>
+            <app-input formControlName="hospital" label="بیمارستان"></app-input>
+            <app-input formControlName="hospital_address" label="آدرس بیمارستان"></app-input>
+            <app-input-phone title="تلفن بیمارستان" (phoneEmit)="addHospitalPhone($event)"></app-input-phone>
+            <app-input formControlName="office_address" label="آدرس مطب"></app-input>
+            <app-input-phone title="تلفن مطب" (phoneEmit)="addOfficePhone($event)"></app-input-phone>
+          </mat-card>
+          <div>
+            <button mat-button color="primary" matStepperPrevious>صفحه قبل</button>
+            <button mat-button color="primary" matStepperNext [disabled]="registerForm.get('personal_info').invalid">صفحه بعد</button>
+          </div>
+        </div>
+      </mat-step>
+
+      <mat-step [stepControl]="registerForm.get('university_info')">
+        <div formGroupName="university_info" style="display: flex; flex-direction: column; padding: 2rem; align-items: center;">
+          <ng-template matStepLabel>اطلاعات نهایی</ng-template>
+          <ng-template matStepLabel>اطلاعات شخصی</ng-template>
+          <mat-card class="mat-elevation-z4" style="margin: 2rem; display: flex; flex-direction: column; width: 400px;">
+            <mat-card-content>
+              <app-checkbox formControlName="is_faculty" label="آیا عضو هیيت علمی دانشگاه می‌باشید؟" (input)="onInput()"></app-checkbox>
+              <app-select formControlName="university_grade" label="رتبه هیئت علمی" [list]="['استادیار', 'دانشیار', 'استاد']"></app-select>
+              <app-input formControlName="university" label="دانشگاه"></app-input>
+            </mat-card-content>
+          </mat-card>
+          <div>
+            <button mat-button color="primary" matStepperPrevious>صفحه قبل</button>
+            <button mat-button color="primary" [disabled]="registerForm.get('university_info').invalid" (click)="register()">ثبت نام</button>
+          </div>
+        </div>
+      </mat-step>
+    </mat-horizontal-stepper>
+  </mat-card-content>
+</mat-card>

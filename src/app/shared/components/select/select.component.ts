@@ -44,7 +44,7 @@ export class SelectComponent implements ControlValueAccessor {
   setDisabledState(isDisabled: boolean): void { this.formControlDirective.valueAccessor.setDisabledState(isDisabled);}
 
   getErrorMessage() {
-    if (this.control.hasError('required')) return 'some message error that show requirement';
+    if (this.control.hasError('required')) return 'تکمیل این فیلد الزامی است';
     if (this.control.hasError('invalidMsg')) return this.control.errors.invalidMsg;
     if (this.control.hasError('pattern')) return 'some message error that show pattern';
   }

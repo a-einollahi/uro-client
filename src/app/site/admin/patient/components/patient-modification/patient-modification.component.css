@@ -1,0 +1,13 @@
+mat-form-field {
+  width: 100%;
+}
+
+table {
+  width: 100%;
+  text-align: right;
+}
+
+.loaded-patient {
+  text-align: right;
+  padding: .5rem 2rem;
+}

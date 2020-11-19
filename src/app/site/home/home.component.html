@@ -1,1 +1,18 @@
-<router-outlet></router-outlet>
+<header *ngIf="header" class="header">
+  <div class="logo-box">
+    <img src="../../../assets/img/icons/urology.png" alt="Logo" class="logo">
+  </div>
+
+  <div class="text-box">
+    <h1 class="heading-primary">
+      <span class="heading-primary-main">{{header}}</span>
+      <span *ngIf="p1" class="heading-primary-sub">{{p1}}</span>
+    </h1>
+
+
+    <p *ngIf="p2" id="p2" style="text-align: center; color: #030303;">{{p2}}</p>
+
+    <a *ngIf="ref" href="{{ref}}" class="btn btn-white">{{description}}</a>
+  </div>
+
+</header>

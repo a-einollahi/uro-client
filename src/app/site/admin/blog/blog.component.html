@@ -1,0 +1,28 @@
+<mat-card class="m-4 mat-elevation-z8">
+  <mat-card-header>
+    <mat-card-title>ویرایش صفحه اول</mat-card-title>
+  </mat-card-header>
+  <mat-card-content [formGroup]="form">
+
+    <app-input formControlName="header" label="عنوان اصلی" required></app-input>
+    <hr>
+    <div style="display: flex; flex-direction: column; align-items: center;">
+      <mat-form-field style="padding: 10px; width: calc(100% - 20px); margin-bottom: 2rem;" appearance="outline">
+        <mat-label>پاراگراف اول</mat-label>
+        <textarea matInput formControlName="p1" rows="6" required></textarea>
+      </mat-form-field>
+      <mat-form-field style="padding: 10px; width: calc(100% - 20px); margin-bottom: .5rem;" appearance="outline">
+        <mat-label>پاراگراف دوم</mat-label>
+        <textarea matInput formControlName="p2" rows="6"></textarea>
+      </mat-form-field>
+    </div>
+    <hr>
+    <app-input formControlName="description" label="معرفی لینک برای کلیک روی آن"></app-input>
+    <app-input formControlName="ref" label="آدرس لینک برای کلیک روی آن" placeholder="http://sitename.domain"></app-input>
+    <hr>
+    <br>
+    <br>
+    <br>
+    <button mat-flat-button color="primary" [disabled]="form.invalid" (click)="updateContent()">ثبت تغییرات</button>
+  </mat-card-content>
+</mat-card>

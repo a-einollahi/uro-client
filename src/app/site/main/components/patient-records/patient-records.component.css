@@ -1,0 +1,40 @@
+.patient-record {
+  display: none;
+  animation: 1s fadeIn;
+  animation-fill-mode: forwards;
+}
+
+.select-date {
+  display: flex;
+  justify-items: center;
+  align-items: center;
+  flex-flow: row nowrap;;
+}
+
+.select-date mat-slide-toggle {
+  padding: 0 0 0 2rem;
+}
+
+@keyframes fadeIn {
+  0% {
+    visibility: hidden;
+    transform: scale(0);
+  }
+
+  100% {
+    visibility: visible;
+    transform: scale(1);
+  }
+}
+
+@media (max-width: 700px) {
+  .select-date {
+    flex-flow: column nowrap;
+  }
+}
+
+@media print {
+  .search-panel {
+    display: none;
+  }
+}

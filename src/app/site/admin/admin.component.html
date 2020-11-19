@@ -1,1 +1,37 @@
-<router-outlet></router-outlet>
+<mat-drawer-container>
+  <mat-drawer #drawer mode="side" [opened]="true">
+    <mat-card>
+      <mat-card-header style="display: flex; justify-content: center;">
+        <mat-card-title>
+          پنل مدیریت
+        </mat-card-title>
+      </mat-card-header>
+    </mat-card>
+    <hr>
+    <mat-card>
+      <mat-card-content>
+        <mat-accordion>
+          <mat-expansion-panel *ngFor="let item of menu">
+            <mat-expansion-panel-header>
+              <mat-panel-title>{{ item.label}}</mat-panel-title>
+            </mat-expansion-panel-header>
+            <ul class="list-group">
+              <li class="list-group-item list-group-item-action" *ngFor="let list of item.children">
+                <a [routerLink]="list['route']" class="text-dark">{{ list['label']}}</a>
+              </li>
+            </ul>
+          </mat-expansion-panel>
+        </mat-accordion>
+        <hr>
+      </mat-card-content>
+    </mat-card>
+  </mat-drawer>
+  <div class="main-body">
+    <button mat-icon-button (click)="drawer.toggle()">
+      <mat-icon>menu</mat-icon>
+    </button>
+  </div>
+  <div>
+    <router-outlet></router-outlet>
+  </div>
+</mat-drawer-container>

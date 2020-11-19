@@ -1,0 +1,11 @@
+mat-form-field {
+  width: 100%;
+  margin: 1rem 0;
+}
+
+@media (min-width: 768px) {
+  mat-form-field {
+    width: 50%;
+    padding: 0 2rem;
+  }
+}

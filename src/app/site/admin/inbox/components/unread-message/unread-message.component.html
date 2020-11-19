@@ -1,0 +1,42 @@
+<div *ngIf="showResponse">
+  <mat-card class="mat-elevation-z10" [formGroup]="form">
+    <mat-card-header>ارسال پاسخ</mat-card-header>
+    <app-input formControlName="sender" label="فرستنده"></app-input>
+    <app-input formControlName="response" label="پاسخ"></app-input>
+    <app-select formControlName="status" label="وضعیت" [list]="['خوانده نشده', 'خوانده شده', 'در حال بررسی', 'انجام شده']"></app-select>
+
+    <button mat-flat-button color="primary" (click)="sendResponse()" [disabled]="form.invalid">ارسال</button>
+    <div style="position: absolute; top: 20px; left: 20px;">
+      <button mat-mini-fab color="primary" (click)="showResponse = false; form.reset()"><mat-icon>close</mat-icon></button>
+    </div>
+  </mat-card>
+</div>
+<table mat-table [dataSource]="dataSource">
+  <ng-container matColumnDef="title">
+    <th mat-header-cell *matHeaderCellDef>عنوان</th>
+    <td mat-cell *matCellDef="let element">{{element['title']}}
+  </ng-container>
+
+  <ng-container matColumnDef="sender">
+    <th mat-header-cell *matHeaderCellDef>فرستنده</th>
+    <td mat-cell *matCellDef="let element">{{element['sender']}}
+  </ng-container>
+
+  <ng-container matColumnDef="message">
+    <th mat-header-cell *matHeaderCellDef>متن پیغام</th>
+    <td mat-cell *matCellDef="let element">{{element['message']}}
+  </ng-container>
+
+  <ng-container matColumnDef="response">
+    <th mat-header-cell *matHeaderCellDef></th>
+    <td mat-cell *matCellDef="let element">
+      <button mat-mini-fab color="primary" (click)="activeResponse(element)"><mat-icon>question_answer</mat-icon></button>
+    </td>
+  </ng-container>
+
+
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>
+<mat-paginator [pageSizeOptions]="[5, 10, 25, 50]" [length]="tableCounts"></mat-paginator>

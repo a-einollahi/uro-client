@@ -1,0 +1,61 @@
+<mat-card class="mat-elevation-z8 mx-2 my-3">
+  <div class="row">
+    <div class="col text-right">
+      <mat-card-header>
+        <mat-card-title>
+          {{title}}
+          <button class="mx-4" mat-mini-fab color="accent" (click)="editQuestionnaireTitle()"><mat-icon>edit</mat-icon></button>
+          <button class="mx-4" mat-mini-fab color="warn" (click)="deleteQuestionnaire()" [disabled]="questions.length > 0"><mat-icon>delete</mat-icon></button>
+        </mat-card-title>
+      </mat-card-header>
+    </div>
+    <div class="col text-left">
+      <button mat-mini-fab color="primary" (click)="returnToQuestionnairePage()">
+        <mat-icon>clear</mat-icon>
+      </button>
+    </div>
+  </div>
+  <mat-card-content>
+    <div class="row mx-2">
+      <button mat-flat-button color="primary" (click)="openAddQuestionDialog()">اضافه کردن سوال جدید</button>
+    </div>
+    <mat-card class="mat-elevation-z8 mx-2 my-3">
+      <mat-card-content>
+        <table mat-table [dataSource]="dataSource">
+          <ng-container matColumnDef="delete">
+            <th mat-header-cell *matHeaderCellDef>حذف</th>
+            <td mat-cell *matCellDef="let element">
+              <button mat-mini-fab color="warn" (click)="onDeleteQuestion(element)"><mat-icon>delete</mat-icon></button>
+            </td>
+          </ng-container>
+
+          <ng-container matColumnDef="edit">
+            <th mat-header-cell *matHeaderCellDef>ویرایش</th>
+            <td mat-cell *matCellDef="let element">
+              <button mat-mini-fab color="accent" (click)="onEditQuestion(element)"><mat-icon>edit</mat-icon></button>
+            </td>
+          </ng-container>
+
+          <ng-container matColumnDef="position">
+            <th mat-header-cell *matHeaderCellDef>ردیف</th>
+            <td mat-cell *matCellDef="let element" style="margin: auto;padding: 10px">{{element['position'] | farsi}}</td>
+          </ng-container>
+
+          <ng-container matColumnDef="type">
+            <th mat-header-cell *matHeaderCellDef>نوع سوال</th>
+            <td mat-cell *matCellDef="let element">{{element['type']}}</td>
+          </ng-container>
+
+          <ng-container matColumnDef="title">
+            <th mat-header-cell *matHeaderCellDef>متن سوال</th>
+            <td mat-cell *matCellDef="let element">{{element['title'] | farsi}}</td>
+          </ng-container>
+
+          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        </table>
+        <mat-paginator [pageSizeOptions]="[5, 10, 25, 50]" [length]="tableCounts"></mat-paginator>
+      </mat-card-content>
+    </mat-card>
+    </mat-card-content>
+    </mat-card>

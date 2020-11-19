@@ -1,0 +1,18 @@
+<header>
+  <mat-toolbar class="nav" fxLayout="row" fxLayoutAlign="space-between center" >
+    <div class="brand">
+      <img src="../../assets/img/icons/urology.png">
+      <h1><a [routerLink]="['/']">سیستم مدیریت و درمان بیماران</a></h1>
+    </div>
+
+    <div class="navbar">
+      <ul fxLayout="row">
+        <li><button *ngIf="!userState.id" mat-stroked-button color="primary" [routerLink]="['/login']">ورود</button></li>
+        <li><button *ngIf="!userState.id" mat-stroked-button color="primary" [routerLink]="['/register']">ثبت نام</button></li>
+        <li><button *ngIf="['super_admin', 'admin'].includes(userState?.role)" mat-stroked-button color="primary" [routerLink]="['/admin']">پنل مدیریت</button></li>
+        <li><button *ngIf="['super_admin', 'admin', 'user'].includes(userState?.role)" mat-stroked-button color="primary" [routerLink]="['/main']">پنل کاربری</button></li>
+        <li><button *ngIf="userState.id" mat-stroked-button color="primary" (click)="logout()">خروج</button></li>
+      </ul>
+    </div>
+  </mat-toolbar>
+</header>

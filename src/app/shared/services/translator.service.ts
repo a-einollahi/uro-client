@@ -11,8 +11,6 @@ export class TranslatorService {
   private arabicChars = ["ي", "ك", "‍", "دِ", "بِ", "زِ", "ذِ", "ِشِ", "ِسِ", "ى"];
   private persianChars = ["ی", "ک", "", "د", "ب", "ز", "ذ", "ش", "س", "ی"];
   
-  constructor() { }
-
   private _switch(string: string | number, src: string[], tar: string[]): string | null {
     if (!string) return '';
     src.forEach((char, i) => {

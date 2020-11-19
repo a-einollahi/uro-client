@@ -1,0 +1,46 @@
+<mat-dialog-content dir="rtl"  style="text-align: center;">
+  <h2 mat-dialog-title style="border: 1px solid #666; padding: 1rem; border-radius: 2rem;">
+    {{data.questionnaire}} - {{data['name']}} - {{data['creation_at'] | jalali | farsi}}
+  </h2>
+
+  <div *ngFor="let question of questions">
+    <h3 style="text-align: right;"><span>{{question.position.toString().padStart(2, '00') | farsi}} - </span>{{question.question_title}}</h3>
+
+    <!-- true-false -->
+    <div *ngIf="question.question_type === 'true-false'" style="padding: 2rem; display: flex;">
+      <mat-radio-group color="warn" style="display: flex; margin-top: 2rem;" [(ngModel)]="question.answer" disabled>
+        <mat-radio-button value="true" class="mx-4">{{'true' }}</mat-radio-button>
+        <mat-radio-button value="false">{{'false' }}</mat-radio-button>
+      </mat-radio-group>
+    </div>
+
+    <!-- single-section -->
+    <div *ngIf="question.question_type === 'single-section'" style="padding: 2rem; display: flex;">
+      <mat-form-field color="warn" [(ngModel)]="question.answer" *ngIf="question.answer">
+        <input matInput placeholder="{{'answer' }}" [value]="question.answer" disabled>
+      </mat-form-field>
+    </div>
+
+    <!-- multi-section -->
+    <div *ngIf="question.question_type === 'multi-section'" style="padding: 2rem; display: flex;">
+      <mat-radio-group color="warn" style="display: flex; margin-top: 2rem;" [(ngModel)]="question.answer" disabled>
+        <mat-radio-button *ngFor="let option of question.options" [value]="option" class="mx-4">{{option  | farsi}}</mat-radio-button>
+      </mat-radio-group>
+    </div>
+
+    <!-- multi-section-multi-answer -->
+    <div class="checkbox-group" *ngIf="question.question_type === 'multi-section-multi-answer'" style="padding: 2rem; display: flex;">
+      <mat-checkbox color="warn" *ngFor="let option of question.options" [checked]="question.answer.includes(option)" disabled>
+        {{option  | farsi}}
+      </mat-checkbox>
+    </div>
+
+    <!-- description -->
+    <div *ngIf="question.question_type === 'description'" style="padding: 2rem; display: flex;">
+      <mat-form-field color="warn" *ngIf="question.answer">
+        <textarea matInput placeholder="{{'description' }}" rows="6" disabled>{{question.answer}}</textarea>
+      </mat-form-field>
+    </div>
+  </div>
+
+</mat-dialog-content>

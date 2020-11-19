@@ -8,6 +8,8 @@ export class FarsiPipe implements PipeTransform {
 
   constructor(private translate: TranslatorService) {}
   transform(value: string | number, src): unknown {
+    if (value == 'true') return 'بله';
+    if (value == 'false') return 'خیر';
     return this.translate.toPersianNumber(value, src);
   }
 

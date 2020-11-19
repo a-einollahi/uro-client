@@ -1,0 +1,29 @@
+mat-drawer-container {
+  height: 100vh;
+  position: relative;
+}
+
+.main-body {
+  position: relative;
+  height: 6rem;
+  width: 100%;
+}
+
+.main-body button {
+  width: 40px!important;
+  position: absolute;
+  right: 1rem;
+  top: 1rem;
+  z-index: 100;
+
+  &:focus {
+    outline: none;
+  }
+}
+
+li {
+  display: flex;
+  align-items: center;
+  padding: 1rem;
+  height: 4.5rem;
+}

@@ -1,0 +1,39 @@
+mat-form-field {
+  margin: auto;
+  padding: 1rem 2rem;
+  width: 32%
+}
+
+mat-card {
+  margin: 2rem;
+  width: 100%;
+}
+
+.close {
+  animation: fadeIn .5s .5s;
+  animation-fill-mode: backwards;
+}
+
+@keyframes fadeIn{
+  0% {
+    opacity: 0;
+    transform: translateY(-50px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 768px) {
+  mat-form-field {
+    margin: auto;
+    padding: .5rem 2rem;
+    width: 100%
+  }
+  
+  mat-card {
+    margin: 1rem;
+  }
+}

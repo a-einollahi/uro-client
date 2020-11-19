@@ -17,6 +17,7 @@ export class InputComponent implements ControlValueAccessor {
   @Input() hint: string;
   @Input() label: string;
   @Input() placeholder: string;
+  @Input() type: string;
   @Input() required: boolean;
   @Input() icon: string;
   @Input() tooltip: string;
@@ -41,8 +42,8 @@ export class InputComponent implements ControlValueAccessor {
   setDisabledState(isDisabled: boolean): void { this.formControlDirective.valueAccessor.setDisabledState(isDisabled);}
 
   getErrorMessage() {
-    if (this.control.hasError('required')) return 'some message error that show requirement';
+    if (this.control.hasError('required')) return this.label ?  `تکمیل فیلد ${this.label} الزامی است.` : 'تکمیل این فیلد الزامی است.';
     if (this.control.hasError('invalidMsg')) return this.control.errors.invalidMsg;
-    if (this.control.hasError('pattern')) return 'some message error that show pattern';
+    if (this.control.hasError('pattern')) return 'فرمت تکمیل اطلاعات صحیح نمی‌باشد.';
   }
 }

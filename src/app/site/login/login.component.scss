@@ -1,0 +1,89 @@
+mat-card {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 90%;
+
+  mat-card-header {
+    display: flex;
+    justify-content: center;
+
+    mat-card-title {
+      display: flex;
+      align-items: center;
+      flex-wrap: nowrap;
+      padding: 1rem;
+
+      img {
+        height: 6rem;
+        height: 6rem;
+      }
+      
+      p {
+        padding: 0 .5rem;
+        font-size: 2.4rem;
+        color: #4caf4f;
+      }
+    }
+  }
+
+  mat-card-content {
+
+    form {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      flex-wrap: nowrap;
+      align-items: center;
+      width: 100%;
+      
+      app-input {
+        margin: .5rem;
+        padding: 0 .5rem;
+        width: 90%;
+      }
+    }
+  }
+
+  mat-card-actions {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+
+    button {
+      width: 150px;
+      font-size: 1.6rem;
+      margin: 1.5rem;
+    }
+
+    p {
+      a {
+        color: #6953b7;
+      }
+    }
+  }
+}
+
+
+@media (min-width: 768px) {
+  mat-card {
+    width: 700px;
+
+    mat-card-content {
+
+      form {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+  
+        app-input {
+          width: 45%;
+        }
+      }
+    }
+  }
+}
+

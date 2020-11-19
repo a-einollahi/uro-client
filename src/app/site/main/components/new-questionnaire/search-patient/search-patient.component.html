@@ -1,0 +1,20 @@
+<div style="display: flex; justify-content: space-between; text-align: center;">
+  <mat-card class="mat-elevation-z8">
+    <mat-card-header>
+      <mat-card-title>جستجو بیمار</mat-card-title>
+    </mat-card-header>
+    <div [formGroup]="searchForm" style="width: 100%;" class="row">
+      <div class="col-sm">
+        <app-input formControlName="search" label="کدملی" nationalcode></app-input>
+      </div>
+      <div class="col-sm">
+        <app-input formControlName="patient" label="نام‌خانوادگی"></app-input>
+      </div>
+    </div>
+    <div style="position: absolute; left: 2rem; top: 2rem;">
+      <button mat-mini-fab color="warn" [disabled]="btnDisablity()" (click)="search()">
+        <mat-icon mat-list-icon>search</mat-icon>
+      </button>
+    </div>
+  </mat-card>
+</div>

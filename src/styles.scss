@@ -1,0 +1,32 @@
+/* You can add global styles to this file, and also import other style files */
+@font-face {font-family: Vazir;src: url('../node_modules/vazir-font/dist/Vazir.eot');src: url('../node_modules/vazir-font/dist/Vazir.eot?#iefix') format('embedded-opentype'),url('../node_modules/vazir-font/dist/Vazir.woff2') format('woff2'),url('../node_modules/vazir-font/dist/Vazir.woff') format('woff'),url('../node_modules/vazir-font/dist/Vazir.ttf') format('truetype');font-weight: normal;font-style: normal;}
+@font-face {font-family: Vazir;src: url('../node_modules/vazir-font/dist/Vazir-Bold.eot');src: url('../node_modules/vazir-font/dist/Vazir-Bold.eot?#iefix') format('embedded-opentype'),url('../node_modules/vazir-font/dist/Vazir-Bold.woff2') format('woff2'),url('../node_modules/vazir-font/dist/Vazir-Bold.woff') format('woff'),url('../node_modules/vazir-font/dist/Vazir-Bold.ttf') format('truetype');font-weight: bold;font-style: normal;}
+@font-face {font-family: Vazir;src: url('../node_modules/vazir-font/dist/Vazir-Black.eot');src: url('../node_modules/vazir-font/dist/Vazir-Black.eot?#iefix') format('embedded-opentype'),url('../node_modules/vazir-font/dist/Vazir-Black.woff2') format('woff2'),       url('../node_modules/vazir-font/dist/Vazir-Black.woff') format('woff'),url('../node_modules/vazir-font/dist/Vazir-Black.ttf') format('truetype');font-weight: 900;font-style: normal;}
+@font-face {font-family: Vazir;src: url('../node_modules/vazir-font/dist/Vazir-Medium.eot');src: url('../node_modules/vazir-font/dist/Vazir-Medium.eot?#iefix') format('embedded-opentype'),url('../node_modules/vazir-font/dist/Vazir-Medium.woff2') format('woff2'),url('../node_modules/vazir-font/dist/Vazir-Medium.woff') format('woff'),url('../node_modules/vazir-font/dist/Vazir-Medium.ttf') format('truetype');font-weight: 500;font-style: normal;}
+@font-face {font-family: Vazir;src: url('../node_modules/vazir-font/dist/Vazir-Light.eot');src: url('../node_modules/vazir-font/dist/Vazir-Light.eot?#iefix') format('embedded-opentype'),url('../node_modules/vazir-font/dist/Vazir-Light.woff2') format('woff2'),url('../node_modules/vazir-font/dist/Vazir-Light.woff') format('woff'),url('../node_modules/vazir-font/dist/Vazir-Light.ttf') format('truetype');font-weight: 300;font-style: normal;}
+@font-face {font-family: Vazir;src: url('../node_modules/vazir-font/dist/Vazir-Thin.eot'); src: url('../node_modules/vazir-font/dist/Vazir-Thin.eot?#iefix') format('embedded-opentype'), url('../node_modules/vazir-font/dist/Vazir-Thin.woff2') format('woff2'), url('../node_modules/vazir-font/dist/Vazir-Thin.woff') format('woff'), url('../node_modules/vazir-font/dist/Vazir-Thin.ttf') format('truetype'); font-weight: 100; font-style: normal;}
+.material-icons{font-family: 'Material Icons' !important;}
+* { margin: 0; padding: 0; font-family: 'Vazir', vazir, Roboto, "Helvetica Neue", sans-serif!important;}
+html, body { height: 100%; box-sizing: border-box; text-decoration: none; font-size: 10px;}
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+a { color: #f3f3f3; text-decoration: none;&:link{color: #f3f3f3; text-decoration: none;};&:visited{color: #f3f3f3; text-decoration: none;} }
+li { list-style: none; display: inline-block; padding: 0 1rem; &:first-child {padding: 0;}}
+button { width: 15rem; &:focus {outline: none;}}
+
+.mat-row {
+  cursor: pointer;
+  &:nth-child(even) { background: #fff; }
+  &:nth-child(odd) { background: #4caf4f26; }
+  &:hover { background: #4caf4f; }
+}
+tr { text-align: justify;}
+.mat-paginator-range-label { direction: ltr; }
+.mat-paginator-container { justify-content: space-between; }
+
+.mat-calendar-body-cell-content {border-radius: 50px; background: linear-gradient(145deg, #93939357, #aeaeae00); box-shadow: 1px 1px 1px #8b8b8b, -1px -1px 1px #bbbbbb;}
+.mat-calendar-body-cell-content:hover {background: linear-gradient(145deg, #f44336, #f44336);color: #f2f2f2;}
+.mat-calendar-body-cell-content.mat-focus-indicator {position: absolute;height: 25px;font-size: large;}
+.mat-calendar-body-today.mat-calendar-body-selected {box-shadow: inset 0 0 0 1px #fff;color: #fb6507;}
+.mat-calendar-body-today.mat-calendar-body-selected:hover {box-shadow: inset 0 0 0 1px fb6507;color: #fff;}
+.mat-calendar-body-today:not(.mat-calendar-body-selected):not(.mat-calendar-body-comparison-identical) {border-radius: 50px;background: linear-gradient(145deg, #1e87db, #23a1ff);box-shadow: 1px 1px 1px #1c80cf, -1px -1px 1px #26adff;color: #fff;}
+.mat-calendar-body-selected {border-radius: 50px;background: linear-gradient(145deg, #3949a3, #4357c2);box-shadow: 1px 1px 1px #36459a, -1px -1px 1px #485dd0;color: #fff;}

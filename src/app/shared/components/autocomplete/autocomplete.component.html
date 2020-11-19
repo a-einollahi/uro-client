@@ -12,7 +12,7 @@
     (blur)="onBlur()">
 
     <mat-autocomplete #autoGroup="matAutocomplete">
-      <mat-option *ngFor="let option of filteredOptions | async" [value]="option">{{option}}</mat-option>
+      <mat-option *ngFor="let option of filteredOptions | async" [value]="option">{{option | farsi}}</mat-option>
     </mat-autocomplete>
 
     <mat-icon *ngIf="icon" matPrefix style="order: -1;">{{icon}}</mat-icon>

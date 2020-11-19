@@ -22,10 +22,10 @@ export class AutocompleteComponent implements OnInit, ControlValueAccessor {
   @Input() icon: string;
   @Input() tooltip: string;
   @Input() tooltipPosition: string;
-  
+
   @Input() list: string[] = [];
   filteredOptions: Observable<string[]>;
-  
+
   constructor(public injector: Injector) { }
 
   ngOnInit(): void {
@@ -38,13 +38,13 @@ export class AutocompleteComponent implements OnInit, ControlValueAccessor {
   }
 
   private _filter(value: string): string[] {
-    return this.list.filter(option => option.toLowerCase().includes(value.toLowerCase()));
+    return this.list.filter(option => option.includes(value));
   }
 
   onBlur() {
     if (!this.control.value) return;
     if (!this.list.includes(this.control.value))
-      this.control.setErrors({invalidMsg: 'some error in autocomplete'})
+      this.control.setErrors({invalidMsg: 'گزینه انتخاب شده نادرست می‌باشد.'})
   }
 
   get control() {
@@ -58,13 +58,13 @@ export class AutocompleteComponent implements OnInit, ControlValueAccessor {
   registerOnChange(fn: any): void { this.formControlDirective.valueAccessor.registerOnChange(fn);}
 
   registerOnTouched(fn: any): void { this.formControlDirective.valueAccessor.registerOnTouched(fn);}
-  
+
   writeValue(obj: any): void { this.formControlDirective.valueAccessor.writeValue(obj);}
 
   setDisabledState(isDisabled: boolean): void { this.formControlDirective.valueAccessor.setDisabledState(isDisabled);}
 
   getErrorMessage() {
-    if (this.control.hasError('required')) return 'some message error that show requirement';
+    if (this.control.hasError('required')) return 'تکمیل این فیلد الزامی است';
     if (this.control.hasError('invalidMsg')) return this.control.errors.invalidMsg;
     if (this.control.hasError('pattern')) return 'some message error that show pattern';
   }

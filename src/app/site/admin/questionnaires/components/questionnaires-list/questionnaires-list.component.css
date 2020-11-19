@@ -1,0 +1,28 @@
+table {
+  width: 100%;
+  text-align: right;
+}
+
+th:nth-child(1) {
+  width: 10%;
+}
+
+th:nth-child(2) {
+  width: 55%;
+  flex-wrap: wrap;
+}
+
+th:nth-child(3) {
+  width: 15%;
+}
+
+th:nth-child(4) {
+  width: 10%;
+}
+
+th:nth-child(5) {
+  width: 10%;
+}
+
+
+button {height: 5rem!important; width: 5rem!important;}

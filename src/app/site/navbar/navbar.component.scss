@@ -1,0 +1,60 @@
+header {
+	background-color: #eee;
+
+	mat-toolbar {
+		background-color: transparent;
+		height: 70px;
+		display: flex;
+		flex-direction: row;
+		flex-wrap: nowrap;
+		align-items: center;
+		justify-content: space-between;
+		
+		.brand {
+			display: flex;
+			flex-direction: row;
+			flex-wrap: nowrap;
+			align-items: center;
+			padding: 0 2rem;
+			color: purple;
+
+			img {
+				padding: 0 0.5rem;
+				height: 5rem;
+				border: none;
+			}
+
+			a {
+				color: purple;
+			}
+		}
+
+		.navbar {
+			ul {
+				li {
+					transition: all .3s;
+					button {
+						width: 120px;
+						color: purple;
+						transition: all .3s;
+						&:hover {
+							border-bottom: 2px solid purple;
+						}
+					}
+
+					&:hover {
+						transform: translateY(-3px);;
+					}
+
+					&:focus {
+						border: none;
+					}
+				}
+			}
+		}
+	}
+
+	button {
+		font-size: 1.5rem;
+	}
+}

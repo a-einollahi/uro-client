@@ -1,0 +1,24 @@
+<mat-card class="mat-elevation-z8">
+  <mat-card-header>
+    <mat-card-title>{{title}}</mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <div>
+      <button mat-mini-fab color="primary" style="position: absolute; left: 15px; top: 15px" [routerLink]="['/admin/questionnaires']"><mat-icon>close</mat-icon></button>
+      <button mat-mini-fab color="primary" style="position: absolute; left: 65px; top: 15px; background: #3ab785;" (click)="createExcelReport()"><mat-icon>import_export</mat-icon></button>
+    </div>
+    <div *ngFor="let question of questions" style="padding: 1rem; text-align: right; border-bottom: 1px dotted #999; margin-bottom: 1rem;">
+      <button mat-mini-fab color="accent" style="position: relative; right: -10px; top: 0px" (click)="onClickQuestionInfo(question)" [disabled]="!question?.overview[0]?.option"><mat-icon>info</mat-icon></button>
+      <span>{{question.position.toString().padStart(2, '00') | farsi}} - </span>
+      {{question.question_title}}
+      <p *ngIf="question?.overview[0]?.option" style="padding: 0rem 5rem">
+        <span *ngFor="let opt of question.overview; let i = index" style="flex-basis: 1;">
+          گزینه {{i+1 | farsi}}: {{opt.option | farsi}}
+          <span style="padding: 0 2rem; margin: 0 1.5rem; border-bottom: red 2px solid; border-radius: 5px;">
+            {{opt.value || '0' | farsi}}
+          </span>
+        </span>
+      </p>
+    </div>
+  </mat-card-content>
+</mat-card>

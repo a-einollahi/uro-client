@@ -1,0 +1,41 @@
+<div dir="rtl">
+  <mat-toolbar color="primary">
+    <p class="text-white p-2">ایجاد سوال جدید</p>
+  </mat-toolbar>
+  <div class="row mx-3 my-2" [formGroup]="form">
+    <div class="row w-25">
+      <app-input formControlName="questionNumber" label="شماره سوال"></app-input>
+    </div>
+    <div class="row w-100">
+      <mat-form-field>
+        <textarea matInput placeholder="عنوان سوال" formControlName="questionTitle"></textarea>
+      </mat-form-field>
+    </div>
+
+    <div class="row m-2"><p>نوع سوال</p>
+      <mat-select class="p-2 mx-2" placeholder="نوع سوال را انتخاب نمایید." formControlName="questionType" id="selection">
+        <mat-option *ngFor="let type of questionTypes" [value]="type[1]">{{trlWord(type[1])}}</mat-option>
+      </mat-select>
+    </div>
+
+    <mat-card class="mx-2 my-3 w-100 mat-elevation-z4"
+    *ngIf="form.get('questionType').value === 'multi-section' || form.get('questionType').value === 'multi-section-multi-answer'
+    ">
+    <!-- || payload.questionType === 'multi_section' || payload.questionType === 'multi_section_multi_answer' -->
+      <mat-card-content>
+        <mat-form-field>
+          <input matInput placeholder="گزینه جدید" formControlName="singleSelection">
+        </mat-form-field>
+        <button class="mb-3" mat-flat-button color="primary" (click)="addMultiSelectionOptions()" [disabled]="addMultiSelectionDisablity()">ایجاد گزینه جدید</button>
+
+        <p class="my-2" *ngFor="let selection of multiSelection; let i = index">
+          <span class="badge badge-pill badge-danger mx-1" (click)="removeMultiSelectionItems(selection)" style="cursor: pointer;">x</span>
+          <span class="badge badge-pill badge-primary mx-3">گزینه {{i + 1 | farsi}}</span>
+          {{selection}}
+        </p>
+
+      </mat-card-content>
+    </mat-card>
+      <button class="mt-3" mat-flat-button color="primary" [disabled]="finalRegisterDisablity()" (click)="finalRegister()">ثبت نهایی</button>
+  </div>
+</div>

@@ -1,0 +1,16 @@
+
+<div dir="rtl">
+  <div class="m-3 row">
+    <p class="m-3" >{{title}}</p>
+  </div>
+  <div class="row mx-4" *ngIf="inputMode" [formGroup]="form">
+    <app-input required formControlName="input" [hint]="title"></app-input>
+  </div>
+  <div class="row justify-content-around">
+    <div>
+      <button class="mx-2" mat-raised-button color="primary" (click)="onAccept()">بله</button>
+      <button class="mx-2" mat-raised-button (click)="onReject()">خیر</button>
+    </div>
+  </div>
+
+</div>

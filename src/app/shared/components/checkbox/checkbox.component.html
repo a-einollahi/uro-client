@@ -10,5 +10,5 @@
   [indeterminate]="indeterminate"
   (change)="onChangeCheckbox()"
 >
-  <span style="padding: 0 .5rem;">{{label || ''}}</span>
+  <span style="padding: 0 .5rem;"><ng-content></ng-content></span>
 </mat-checkbox>

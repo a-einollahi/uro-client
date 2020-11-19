@@ -1,0 +1,28 @@
+<hr>
+<div class="row">
+  <div style="display: flex;" class="col mr-auto">
+
+    <mat-form-field>
+      <input matInput placeholder="{{title}}" (input)="inputPhoneNumber($event)">
+    </mat-form-field>
+    <span>
+      <button mat-mini-fab color="warn" [disabled]="phoneDisablity" (click)="onAddPhone()"
+      style="width: 4rem!important; height: 4rem;">
+      <mat-icon mat-list-icon>+</mat-icon>
+    </button>
+  </span>
+</div>
+<!-- <div class="col"></div> -->
+</div>
+<div class="row">
+  <div class="col"></div>
+  <div class="col">
+    <mat-list>
+      <mat-list-item *ngFor="let phone of phoneNumber">
+        <p mat-line>{{phone}}</p> <span style="cursor: pointer;" (click)="onRemovePhone(phone)"><mat-icon mat-list-icon>delete</mat-icon></span>
+        <mat-icon mat-list-icon>phone</mat-icon>
+      </mat-list-item>
+    </mat-list>
+  </div>
+</div>
+<hr>
