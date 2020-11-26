@@ -19,8 +19,6 @@ export class HomeComponent implements OnInit {
   ngOnInit(): void {
     this.http.get('blog', 'getBlogContent', null).subscribe(res => {
       if (res) {
-        console.log(res);
-
         this.header = res.header;
         this.p1 = res.p1;
         this.p2 = res.p2;

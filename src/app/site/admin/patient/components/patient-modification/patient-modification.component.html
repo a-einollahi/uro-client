@@ -1,12 +1,15 @@
-<mat-card class="mat-elevation-z8">
+<mat-card class="mat-elevation-z8" [formGroup]="form">
   <mat-card-header>
     <mat-card-title>ویرایش اطلاعات بیماران</mat-card-title>
   </mat-card-header>
   <mat-card-content>
-    <div style="display: flex; margin-top: 2rem;">
-      <mat-form-field style="padding: 0 2rem;">
-        <input matInput placeholder="کد‌ملی"  (keyup.enter)="onSearchFilter($event.target.value)" required>
-      </mat-form-field>
+    <div class="row flex align-items-center">
+      <div class="col-10">
+        <app-input formControlName="search" nationalcode label="کدملی" hint="از حروف انگلیسی برای وارد کردن کدملی استفاده نمایید." required></app-input>
+      </div>
+      <div class="col-2">
+        <button mat-flat-button color="primary" [disabled]="form.invalid" (click)="onSearchFilter()">جستجو</button>
+      </div>
     </div>
 
 

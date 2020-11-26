@@ -1,5 +1,6 @@
-<mat-dialog-content> <!-- instead of your <div>  or use <div mat-dialog-content> -->
-  <div class="container pb-5">
+<mat-dialog-content>
+  <mat-spinner *ngIf="!isLoaded"></mat-spinner>
+  <div *ngIf="isLoaded" class="container pb-5">
     <h1 mat-dialog-title style="margin-bottom:0; text-align: right;">{{person["name"]}}</h1>
     <h3 mat-dialog-title style="text-align: right;">( {{ person["speciality"]}} )</h3>
     <ul class="list-group" dir="rtl">
@@ -7,41 +8,22 @@
       <li class="list-group-item bg-success text-white p-3 text-center" *ngIf="person['role'] === 'admin'">مدیر</li>
       <li class="list-group-item bg-warning p-3 text-center" *ngIf="person['role'] === 'user'">کاربر</li>
 
-      <li class="list-group-item">
-        کد‌ملی:
-        {{person["national_code"] | farsi}}
-      </li>
+      <li class="list-group-item">کد‌ملی: {{person["national_code"] | farsi}}</li>
 
-      <li class="list-group-item" *ngIf="person['state']">
-        استان: {{person['state']}} <span *ngIf="person['city']"> - {{person['city']}}</span>
-      </li>
+      <li class="list-group-item">استان: {{person['location'] || ''}}</li>
 
-      <li class="list-group-item" *ngIf="person['mobile']">
-        تلفن همراه:
-        {{person["mobile"] | farsi}}
-      </li>
+      <li class="list-group-item">تلفن همراه: {{person["mobile"] || '' | farsi}}</li>
 
-      <li class="list-group-item" *ngIf="person['hospital']">
-        بیمارستان:
-        {{person["hospital"]}}
-      </li>
-      <li class="list-group-item" *ngIf="person['hospital_address']">
-        آدرس بیمارستان:
-        {{person["hospital_address"]}}
-      </li>
-      <li class="list-group-item" *ngIf="person['hospital_phone']">
-        تلفن بیمارستان:
-        {{person["hospital_phone"] | farsi}}
-      </li>
+      <li class="list-group-item">بیمارستان: {{person["hospital"] || person['hospital']}}</li>
+      <li class="list-group-item">آدرس بیمارستان: {{person["hospital_address"] || ''}}
+      </li><li class="list-group-item">تلفن بیمارستان: {{person["hospital_phone"] || '' | farsi}}</li>
 
-      <li class="list-group-item" *ngIf="person['office_address']">
-        آدرس مطب:
-        {{person["office_address"]}}
-      </li>
-      <li class="list-group-item" *ngIf="person['office_phone']">
-        تلفن مطب:
-        {{person["office_phone"] | farsi}}
-      </li>
+      <li class="list-group-item">آدرس مطب: {{person["office_address"] || ''}}</li>
+      <li class="list-group-item">تلفن مطب: {{person["office_phone"] || '' | farsi}}</li>
+
+
+      <li *ngIf="person['university']" class="list-group-item">هیئت علمی دانشگاه: {{person['university'] | farsi}}</li>
+      <li *ngIf="person['university_grade']" class="list-group-item">رتبه علمی: {{person['university_grade'] | farsi}}</li>
     </ul>
   </div>
 

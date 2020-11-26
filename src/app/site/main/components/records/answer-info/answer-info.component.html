@@ -9,15 +9,15 @@
     <!-- true-false -->
     <div *ngIf="question.question_type === 'true-false'" style="padding: 2rem; display: flex;">
       <mat-radio-group color="warn" style="display: flex; margin-top: 2rem;" [(ngModel)]="question.answer" disabled>
-        <mat-radio-button value="true" class="mx-4">{{'true' }}</mat-radio-button>
-        <mat-radio-button value="false">{{'false' }}</mat-radio-button>
+        <mat-radio-button value="true" class="mx-4">{{'true' | farsi}}</mat-radio-button>
+        <mat-radio-button value="false">{{'false' | farsi}}</mat-radio-button>
       </mat-radio-group>
     </div>
 
     <!-- single-section -->
     <div *ngIf="question.question_type === 'single-section'" style="padding: 2rem; display: flex;">
-      <mat-form-field color="warn" [(ngModel)]="question.answer" *ngIf="question.answer">
-        <input matInput placeholder="{{'answer' }}" [value]="question.answer" disabled>
+      <mat-form-field color="warn" *ngIf="question.answer">
+        <input matInput placeholder="پاسخ" [(ngModel)]="question.answer" disabled>
       </mat-form-field>
     </div>
 
@@ -38,7 +38,7 @@
     <!-- description -->
     <div *ngIf="question.question_type === 'description'" style="padding: 2rem; display: flex;">
       <mat-form-field color="warn" *ngIf="question.answer">
-        <textarea matInput placeholder="{{'description' }}" rows="6" disabled>{{question.answer}}</textarea>
+        <textarea matInput placeholder="شرح" rows="6" disabled>{{question.answer}}</textarea>
       </mat-form-field>
     </div>
   </div>

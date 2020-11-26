@@ -11,7 +11,7 @@ import { MessageService, MessageType } from './../../../../../shared/services/me
 })
 export class SearchPatientComponent implements OnInit {
   searchForm: FormGroup = new FormGroup({
-    search: new FormControl('007830478'),
+    search: new FormControl(''),
     patient: new FormControl('')
   });
 

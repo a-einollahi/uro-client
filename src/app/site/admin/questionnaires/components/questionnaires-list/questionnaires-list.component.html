@@ -9,24 +9,24 @@
       placeholder="برای جستجو در جدول عبارت خود را وارد نمایید." label="جستجو"></app-input>
     </div>
 
-    <table mat-table [dataSource]="dataSource">
+    <table mat-table [dataSource]="dataSource" matSort>
       <ng-container matColumnDef="position">
-        <th mat-header-cell *matHeaderCellDef>ردیف</th>
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>ردیف</th>
         <td mat-cell *matCellDef="let element">{{element['position'] | farsi}}</td>
       </ng-container>
 
       <ng-container matColumnDef="title">
-        <th mat-header-cell *matHeaderCellDef>عنوان</th>
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>عنوان</th>
         <td mat-cell *matCellDef="let element">{{element['title']}}</td>
       </ng-container>
 
       <ng-container matColumnDef="creation at">
-        <th mat-header-cell *matHeaderCellDef>تاریخ ایجاد</th>
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>تاریخ ایجاد</th>
         <td mat-cell *matCellDef="let element">{{element['creation at'] | jalali | farsi}}</td>
       </ng-container>
 
       <ng-container matColumnDef="options">
-        <th mat-header-cell *matHeaderCellDef>ویرایش</th>
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>ویرایش</th>
         <td mat-cell *matCellDef="let element">
           <button mat-mini-fab color="warn" (click)="onClickEdit(element)"><mat-icon>edit</mat-icon></button>
         </td>

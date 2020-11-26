@@ -3,6 +3,7 @@ export const MENU = [
   // 1
   {label: 'مدیریت کاربران', children: [
     {label: 'لیست کاربران', route: '/admin/users'},
+    {label: 'ایجاد کاربر جدید', route: '/admin/users/new-user'},
   ]},
   // 2
   {label: 'مدیریت پرسشنامه‌ها', children: [

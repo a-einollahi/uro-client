@@ -24,8 +24,8 @@ export class RegisterComponent implements OnInit, OnDestroy {
 
   registerForm: FormGroup
   provincesSubscription: Subscription;
-  
-  constructor(private auth: AuthService, private message: MessageService, private fb:FormBuilder, private router: RouterService) { }
+
+  constructor(private auth: AuthService, private message: MessageService, private router: RouterService) { }
 
   ngOnInit(): void {
     this.registerForm = new FormGroup({
@@ -62,7 +62,7 @@ export class RegisterComponent implements OnInit, OnDestroy {
         this.registerForm.get('personal_info.city').setValue(null);
         this.filteredCities = [];
         let cities = this.cities.filter(c => c.state === data);
-        
+
         if (cities) {
           this.filteredCities = cities[0]?.city;
           this.registerForm.get('personal_info.city').enable();
@@ -84,7 +84,7 @@ export class RegisterComponent implements OnInit, OnDestroy {
     this.provincesSubscription.unsubscribe();
   }
 
-  register(): void {    
+  register(): void {
     this.auth.register(this.registerForm.value)
       .subscribe(res => {
         if (res['user']['active'] === null) {
@@ -101,15 +101,15 @@ export class RegisterComponent implements OnInit, OnDestroy {
   }
 
   addMobilePhone(e) {
-    this.registerForm.get('personalInfo.mobile').setValue(e);
+    this.registerForm.get('personal_info.mobile').setValue(e);
   }
-  
+
   addHospitalPhone(e) {
-    this.registerForm.get('personalInfo.hospital_phone').setValue(e);
+    this.registerForm.get('personal_info.hospital_phone').setValue(e);
   }
-  
+
   addOfficePhone(e) {
-    this.registerForm.get('personalInfo.office_phone').setValue(e);
+    this.registerForm.get('personal_info.office_phone').setValue(e);
   }
 
   confirmPasswordValidation(control: FormControl): ValidationErrors {

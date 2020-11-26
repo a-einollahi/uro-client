@@ -1,6 +1,7 @@
 import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { MatPaginator } from '@angular/material/paginator';
+import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { HttpService } from 'src/app/shared/services/http.service';
 
@@ -15,6 +16,7 @@ export class UnreadMessageComponent implements OnInit, AfterViewInit {
   tableCounts = 0;
   showResponse = false;
   @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
+  @ViewChild(MatSort, {static: true}) sort: MatSort;
 
   form: FormGroup = new FormGroup({
     id: new FormControl(null, [Validators.required]),
@@ -32,6 +34,7 @@ export class UnreadMessageComponent implements OnInit, AfterViewInit {
 
   ngAfterViewInit(): void {
     this.dataSource.paginator = this.paginator;
+    this.dataSource.sort = this.sort;
   }
 
   loadData() {

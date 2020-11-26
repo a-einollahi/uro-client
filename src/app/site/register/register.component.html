@@ -28,7 +28,7 @@
           </div>
         </div>
       </mat-step>
-      
+
       <mat-step [stepControl]="registerForm.get('personal_info')">
         <div formGroupName="personal_info" style="display: flex; flex-direction: column; padding: 2rem; align-items: center;">
           <ng-template matStepLabel>اطلاعات شخصی</ng-template>
@@ -57,8 +57,8 @@
           <mat-card class="mat-elevation-z4" style="margin: 2rem; display: flex; flex-direction: column; width: 400px;">
             <mat-card-content>
               <app-checkbox formControlName="is_faculty" label="آیا عضو هیيت علمی دانشگاه می‌باشید؟" (input)="onInput()"></app-checkbox>
-              <app-select formControlName="university_grade" label="رتبه هیئت علمی" [list]="['استادیار', 'دانشیار', 'استاد']"></app-select>
               <app-input formControlName="university" label="دانشگاه"></app-input>
+              <app-select formControlName="university_grade" label="رتبه هیئت علمی" [list]="['استادیار', 'دانشیار', 'استاد']"></app-select>
             </mat-card-content>
           </mat-card>
           <div>

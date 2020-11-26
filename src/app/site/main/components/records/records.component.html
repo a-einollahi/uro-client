@@ -25,34 +25,34 @@
         </mat-form-field>
       </div>
 
-      <table mat-table [dataSource]="dataSource">
+      <table mat-table [dataSource]="dataSource" matSort>
         <ng-container matColumnDef="position">
           <th mat-header-cell *matHeaderCellDef>ردیف</th>
           <td mat-cell *matCellDef="let element">{{ element["position"] | farsi }}</td>
         </ng-container>
 
         <ng-container matColumnDef="full name">
-          <th mat-header-cell *matHeaderCellDef>نام و نام‌خانوادگی</th>
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>نام و نام‌خانوادگی</th>
           <td mat-cell *matCellDef="let element">{{ element["full name"] }}</td>
         </ng-container>
 
         <ng-container matColumnDef="national code">
-          <th mat-header-cell *matHeaderCellDef>کد‌ملی</th>
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>کد‌ملی</th>
           <td mat-cell *matCellDef="let element">{{ element["national code"] | farsi }}</td>
         </ng-container>
 
         <ng-container matColumnDef="creation at">
-          <th mat-header-cell *matHeaderCellDef>تاریخ پرسشنامه</th>
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>تاریخ پرسشنامه</th>
           <td mat-cell *matCellDef="let element">{{ element["creation at"] | jalali | farsi }}</td>
         </ng-container>
 
         <ng-container matColumnDef="questionnaire">
-          <th mat-header-cell *matHeaderCellDef>پرسشنامه</th>
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>پرسشنامه</th>
           <td mat-cell *matCellDef="let element">{{ element["questionnaire"] | farsi }}</td>
         </ng-container>
 
         <ng-container matColumnDef="select">
-          <th mat-header-cell *matHeaderCellDef>انتخاب</th>
+          <th mat-header-cell *matHeaderCellDef>انتخاب  |  ویرایش</th>
           <td mat-cell *matCellDef="let element" >
             <button mat-mini-fab color="accent" (click)="onSelectUser(element)">
               <mat-icon>info</mat-icon>
@@ -62,7 +62,6 @@
             </button>
           </td>
         </ng-container>
-        <!-- 'position', 'full name', 'email', 'national code', 'created at' -->
 
         <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
         <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>

@@ -11,6 +11,7 @@ export class UserDetailComponent implements OnInit {
   person: object = {};
   userStates: string[] = ['کاربر فعال است', 'کاربر غیر فعال است'];
   userStatus: string = '';
+  isLoaded: boolean = false;
 
   constructor(public dialogRef: MatDialogRef<UserDetailComponent>, private http: HttpService,
     @Inject(MAT_DIALOG_DATA) public data) { }
@@ -45,6 +46,8 @@ export class UserDetailComponent implements OnInit {
         this.person['university'] = res['person']['university'];
         this.person['university_grade'] = res['person']['university_grade'];
       }
+
+      this.isLoaded = true;
     });
   }
 

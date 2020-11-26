@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewChild, AfterViewInit } from "@angular/core";
 import { FormGroup, FormControl } from "@angular/forms";
 import { MatPaginator } from "@angular/material/paginator";
+import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from "@angular/material/table";
 import { MatDialog } from "@angular/material/dialog";
 import * as moment from "jalali-moment";
@@ -21,10 +22,11 @@ export class RecordsComponent implements OnInit, AfterViewInit {
   dataSource = new MatTableDataSource();
   searchForm: FormGroup = new FormGroup({
     search: new FormControl(""),
-    from: new FormControl(moment().startOf('jmonth')),
+    from: new FormControl(moment().subtract(2, "month")),
     until: new FormControl(moment()),
   });
   @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
+  @ViewChild(MatSort, { static: true }) sort: MatSort;
 
   constructor(private http: HttpService, private dialog: MatDialog, private message: MessageService) {}
 
@@ -34,20 +36,21 @@ export class RecordsComponent implements OnInit, AfterViewInit {
 
   ngAfterViewInit(): void {
     this.dataSource.paginator = this.paginator;
+    this.dataSource.sort = this.sort;
   }
 
   loadData() {
     const searchField = {
-      from: moment(this.searchForm.value.from).isValid()
-        ? moment(this.searchForm.value.from).format("YYYY/MM/DD")
+      from: moment(this.searchForm.get('from').value).isValid()
+        ? this.searchForm.get('from').value.locale('en').format()
         : null,
-      until: moment(this.searchForm.value.until).isValid()
-        ? moment(this.searchForm.value.until).add(1, "day").format("YYYY/MM/DD")
+      until: moment(this.searchForm.get('until').value).isValid()
+        ? this.searchForm.get('until').value.add(1, "day").locale('en').format()
         : null,
     };
 
-    if (moment(this.searchForm.value.from).isAfter(moment(this.searchForm.value.until)) ||
-      !moment(this.searchForm.value.from).isBefore(moment(this.searchForm.value.until))) {
+    if (moment(this.searchForm.get('from').value).isAfter(moment(this.searchForm.get('until').value)) ||
+      !moment(this.searchForm.get('from').value).isBefore(moment(this.searchForm.get('until').value))) {
       this.message.showMessage('اشکال در وارد کردن تاریخ', MessageType.Error);
       this.dataSource.data = [];
       return;

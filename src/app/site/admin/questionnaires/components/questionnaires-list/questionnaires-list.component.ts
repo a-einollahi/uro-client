@@ -1,6 +1,7 @@
 import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
 import { MatPaginator } from '@angular/material/paginator';
+import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { HttpService } from 'src/app/shared/services/http.service';
 import { RouterService } from './../../../../../shared/services/router.service';
@@ -16,6 +17,7 @@ export class QuestionnairesListComponent implements OnInit, AfterViewInit {
   questionnaireCounts = 0;
 
   @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
+  @ViewChild(MatSort, {static: true}) sort: MatSort;
 
   searchForm: FormGroup;
   constructor(private http: HttpService, private router: RouterService) {
@@ -30,6 +32,7 @@ export class QuestionnairesListComponent implements OnInit, AfterViewInit {
 
   ngAfterViewInit(): void {
     this.dataSource.paginator = this.paginator;
+    this.dataSource.sort = this.sort;
   }
 
   loadQuestionnaireData() {

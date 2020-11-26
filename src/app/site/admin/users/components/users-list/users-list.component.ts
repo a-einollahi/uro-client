@@ -1,3 +1,4 @@
+import { MatSort } from '@angular/material/sort';
 import { Component, OnInit, ViewChild, AfterViewInit } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
@@ -18,6 +19,7 @@ export class UsersListComponent implements OnInit, AfterViewInit {
   userNumbers = 0;
 
   @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
+  @ViewChild(MatSort, {static: true}) sort: MatSort;
 
   searchForm: FormGroup;
   constructor(private http: HttpService, private dialog: MatDialog) { }
@@ -31,6 +33,7 @@ export class UsersListComponent implements OnInit, AfterViewInit {
 
   ngAfterViewInit(): void {
     this.dataSource.paginator = this.paginator;
+    this.dataSource.sort = this.sort;
   }
 
   displayedColumn(col) {
